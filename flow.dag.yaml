@@ -46,7 +46,7 @@ nodes:
     rag_answer: ${inputs.rag_answer}
     standard_answer: ${inputs.standard_answer}
   provider: AzureOpenAI
-  connection: openaieastusxlb
+  connection: azure_open_ai_connection
   api: chat
   module: promptflow.tools.aoai
   use_variants: false
