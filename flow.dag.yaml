@@ -26,7 +26,7 @@ outputs:
   context_question_relevance:
     type: string
     reference: ${concat_scores.output.context_question_relevance}
-  "answer_question${concat_scores.output.answer_question_relevance}_relevance":
+  answer_question_relevance:
     type: string
     reference: ${concat_scores.output.answer_question_relevance}
 nodes:
