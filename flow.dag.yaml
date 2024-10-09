@@ -19,6 +19,10 @@ inputs:
     type: string
     default: ""
     is_chat_input: false
+  context:
+    type: string
+    default: ""
+    is_chat_input: false
 outputs:
   ground_truth:
     type: string
@@ -26,7 +30,7 @@ outputs:
   context_question_relevance:
     type: string
     reference: ${concat_scores.output.context_question_relevance}
-  answer_question_relevance:
+  "answer_question${concat_scores.output.answer_question_relevance}_relevance":
     type: string
     reference: ${concat_scores.output.answer_question_relevance}
 nodes:
@@ -42,11 +46,12 @@ nodes:
     max_tokens: 256
     response_format:
       type: json_object
+    context: ${inputs.context}
     question: ${inputs.question}
     rag_answer: ${inputs.rag_answer}
     standard_answer: ${inputs.standard_answer}
   provider: AzureOpenAI
-  connection: azure_open_ai_connection
+  connection: openai-xlb-westus3
   api: chat
   module: promptflow.tools.aoai
   use_variants: false
